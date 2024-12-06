@@ -1,0 +1,9 @@
+config:
+  phases:
+    - duration: 2
+      arrivalRate: 10
+      name: Load testing the Priming API for 2 seconds with 10 concurrent requests/s
+scenarios:
+  - flow:
+      - get:
+          url: "{{ url }}"

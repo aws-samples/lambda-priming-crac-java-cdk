@@ -15,9 +15,9 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package software.amazon.awscdk.examples.priming.model;
+package software.amazon.awscdk.examples.unicorn.dto;
 
 import java.util.UUID;
 
-public record Priming(UUID id, String name, String type) {
+public record UnicornDto(UUID id, String name, String type) {
 }

@@ -15,7 +15,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package software.amazon.awscdk.examples.priming.model;
+package software.amazon.awscdk.examples.unicorn.model;
 
 import java.util.Map;
 
@@ -23,7 +23,7 @@ import com.amazonaws.serverless.proxy.model.Headers;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PrimingResponse {
+public class UnicornResponse {
 
     @Expose(serialize = true, deserialize = true)
     private int statusCode;
@@ -43,18 +43,18 @@ public class PrimingResponse {
     @Expose(serialize = true, deserialize = true)
     private boolean isBase64Encoded;
 
-    public PrimingResponse() {
+    public UnicornResponse() {
     }
 
-    public PrimingResponse(int statusCode) {
+    public UnicornResponse(int statusCode) {
         this(statusCode, (Headers) null);
     }
 
-    public PrimingResponse(int statusCode, Headers headers) {
+    public UnicornResponse(int statusCode, Headers headers) {
         this(statusCode, headers, (String) null);
     }
 
-    public PrimingResponse(int statusCode, Headers headers, String body) {
+    public UnicornResponse(int statusCode, Headers headers, String body) {
         this.statusCode = statusCode;
         this.multiValueHeaders = headers;
         this.body = body;

@@ -15,32 +15,9 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package software.amazon.awscdk.examples.priming.service;
+package software.amazon.awscdk.examples.unicorn.model;
 
-import java.util.List;
+import java.util.UUID;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
-import software.amazon.awscdk.examples.priming.model.Priming;
-import software.amazon.awscdk.examples.priming.repository.PrimingRepository;
-
-@Service
-public class PrimingService {
-
-    private static final Logger log = LoggerFactory.getLogger(PrimingService.class);
-
-    private final PrimingRepository primingRepository;
-
-    public PrimingService(PrimingRepository primingRepository) {
-        log.info("PrimingService->started");
-        this.primingRepository = primingRepository;
-        log.info("PrimingService->finished");
-    }
-
-    public List<Priming> read() {
-        return primingRepository.findAll();
-    }
-
+public record Unicorn(UUID id, String name, String type) {
 }

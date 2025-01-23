@@ -15,7 +15,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package software.amazon.awscdk.examples.priming.handler;
+package software.amazon.awscdk.examples.unicorn.handler;
 
 import java.util.List;
 
@@ -30,28 +30,28 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.google.gson.Gson;
 
-import software.amazon.awscdk.examples.priming.PrimingApplication;
-import software.amazon.awscdk.examples.priming.dto.PrimingDto;
-import software.amazon.awscdk.examples.priming.model.Priming;
-import software.amazon.awscdk.examples.priming.model.PrimingRequest;
-import software.amazon.awscdk.examples.priming.model.PrimingResponse;
-import software.amazon.awscdk.examples.priming.service.PrimingService;
+import software.amazon.awscdk.examples.unicorn.UnicornApplication;
+import software.amazon.awscdk.examples.unicorn.dto.UnicornDto;
+import software.amazon.awscdk.examples.unicorn.model.Unicorn;
+import software.amazon.awscdk.examples.unicorn.model.UnicornRequest;
+import software.amazon.awscdk.examples.unicorn.model.UnicornResponse;
+import software.amazon.awscdk.examples.unicorn.service.UnicornService;
 
-public class ManualPriming implements RequestHandler<PrimingRequest, PrimingResponse>, Resource {
+public class ManualPriming implements RequestHandler<UnicornRequest, UnicornResponse>, Resource {
 
     private static final Logger log = LoggerFactory.getLogger(ManualPriming.class);
 
-    private final PrimingService primingService;
+    private final UnicornService unicornService;
 
     private final Gson gson;
 
     public ManualPriming() {
         log.info("ManualPriming->started");
 
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(PrimingApplication.class,
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(UnicornApplication.class,
                 new String[] {});
 
-        this.primingService = configurableApplicationContext.getBean(PrimingService.class);
+        this.unicornService = configurableApplicationContext.getBean(UnicornService.class);
         this.gson = configurableApplicationContext.getBean(Gson.class);
 
         Core.getGlobalContext().register(this);
@@ -60,13 +60,13 @@ public class ManualPriming implements RequestHandler<PrimingRequest, PrimingResp
     }
 
     @Override
-    public PrimingResponse handleRequest(PrimingRequest request, Context context) {
+    public UnicornResponse handleRequest(UnicornRequest request, Context context) {
         log.info("handleRequest->started");
 
         var awsLambdaInitializationType = System.getenv("AWS_LAMBDA_INITIALIZATION_TYPE");
         log.info("awsLambdaInitializationType: {}", awsLambdaInitializationType);
 
-        var primingResponse = new PrimingResponse();
+        var primingResponse = new UnicornResponse();
         primingResponse.setBody(gson.toJson(getPrimingDtos()));
         primingResponse.setStatusCode(200);
 
@@ -80,11 +80,11 @@ public class ManualPriming implements RequestHandler<PrimingRequest, PrimingResp
             throws Exception {
         log.info("beforeCheckpoint->started");
 
-        PrimingRequest primingRequest = new PrimingRequest();
-        primingRequest.setHttpMethod("GET");
-        primingRequest.setPath("/priming");
+        UnicornRequest unicornRequest = new UnicornRequest();
+        unicornRequest.setHttpMethod("GET");
+        unicornRequest.setPath("/priming");
 
-        handleRequest(primingRequest, null);
+        handleRequest(unicornRequest, null);
 
         log.info("beforeCheckpoint->finished");
     }
@@ -95,19 +95,19 @@ public class ManualPriming implements RequestHandler<PrimingRequest, PrimingResp
         log.info("afterRestore->finished");
     }
 
-    public List<PrimingDto> getPrimingDtos() {
+    public List<UnicornDto> getPrimingDtos() {
         log.info("getPrimingDtos->started");
 
-        List<Priming> primings = primingService.read();
+        List<Unicorn> unicorns = unicornService.read();
 
-        List<PrimingDto> primingDtos = primings.stream()
-                .map(priming -> new PrimingDto(priming.id(), priming.name(),
+        List<UnicornDto> unicornDtos = unicorns.stream()
+                .map(priming -> new UnicornDto(priming.id(), priming.name(),
                         priming.type()))
                 .toList();
 
         log.info("getPrimingDtos->finished");
 
-        return primingDtos;
+        return unicornDtos;
     }
 
 }

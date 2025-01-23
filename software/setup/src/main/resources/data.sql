@@ -1,60 +1,60 @@
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Sparkle',
+        'Winged'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Moonbeam',
+        'Celestial'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Silverthorn',
+        'Winged'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Thunderstorm',
+        'Solar'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Sunburst',
+        'Illusionist'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Frostbite',
+        'Pegasus'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Leafwhisper',
+        'Illusionist'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Dreamweaver',
+        'Illusionist'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Starheart',
+        'Pegasus'
     );
-INSERT INTO priming
+INSERT INTO unicorn
 VALUES (
         gen_random_uuid(),
-        'Prime',
-        'Priming'
+        'Windrunner',
+        'Astral'
     );

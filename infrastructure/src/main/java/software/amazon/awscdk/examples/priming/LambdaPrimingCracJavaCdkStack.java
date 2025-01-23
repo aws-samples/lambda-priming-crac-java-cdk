@@ -196,7 +196,7 @@ public class LambdaPrimingCracJavaCdkStack extends Stack {
 
                 var function = Function.Builder.create(this, "PrimingCracJavaFunctionSetup")
                                 .code(code)
-                                .handler("software.amazon.awscdk.examples.priming.SetupHandler")
+                                .handler("software.amazon.awscdk.examples.unicorn.SetupHandler")
                                 .architecture(Architecture.ARM_64)
                                 .memorySize(1024)
                                 .timeout(Duration.seconds(900))
@@ -232,23 +232,23 @@ public class LambdaPrimingCracJavaCdkStack extends Stack {
                 var code = createCodePriming(bundlingOptionsBuilder);
 
                 createFunctionPriming(vpc, code, PRIME_TYPE_ON_DEMAND,
-                                "software.amazon.awscdk.examples.priming.handler.NoPriming", null, databaseUrl,
+                                "software.amazon.awscdk.examples.unicorn.handler.NoPriming", null, databaseUrl,
                                 databasePassword);
 
                 createFunctionPriming(vpc, code, PRIME_TYPE_NO_PRIMING,
-                                "software.amazon.awscdk.examples.priming.handler.NoPriming",
+                                "software.amazon.awscdk.examples.unicorn.handler.NoPriming",
                                 SnapStartConf.ON_PUBLISHED_VERSIONS,
                                 databaseUrl,
                                 databasePassword);
 
                 createFunctionPriming(vpc, code, PRIME_TYPE_MANUAL_PRIMING,
-                                "software.amazon.awscdk.examples.priming.handler.ManualPriming",
+                                "software.amazon.awscdk.examples.unicorn.handler.ManualPriming",
                                 SnapStartConf.ON_PUBLISHED_VERSIONS,
                                 databaseUrl,
                                 databasePassword);
 
                 createFunctionPriming(vpc, code, PRIME_TYPE_AUTOMATIC_PRIMING,
-                                "software.amazon.awscdk.examples.priming.handler.AutomaticPriming",
+                                "software.amazon.awscdk.examples.unicorn.handler.AutomaticPriming",
                                 SnapStartConf.ON_PUBLISHED_VERSIONS,
                                 databaseUrl,
                                 databasePassword);

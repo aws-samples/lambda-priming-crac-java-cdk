@@ -15,42 +15,48 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package software.amazon.awscdk.examples.priming.repository;
+package software.amazon.awscdk.examples.unicorn.repository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.BadSqlGrammarException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+import software.amazon.awscdk.examples.unicorn.model.Unicorn;
 
 import java.util.List;
 import java.util.UUID;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import software.amazon.awscdk.examples.priming.model.Priming;
-
 @Repository
-public class PrimingRepository {
+public class UnicornRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(PrimingRepository.class);
+    private static final Logger log = LoggerFactory.getLogger(UnicornRepository.class);
 
     private final JdbcTemplate jdbcTemplate;
 
-    public PrimingRepository(JdbcTemplate jdbcTemplate) {
-        log.info("PrimingRepository->started");
+    public UnicornRepository(JdbcTemplate jdbcTemplate) {
+        log.info("UnicornRepository->started");
         this.jdbcTemplate = jdbcTemplate;
-        log.info("PrimingRepository->finished");
+        log.info("v->finished");
     }
 
-    public List<Priming> findAll() {
+    public List<Unicorn> findAll() {
         log.info("findAll->started");
 
-        List<Priming> primings = jdbcTemplate.query("SELECT * FROM priming", (resultSet, rowNum) -> {
-            return new Priming(UUID.fromString(resultSet.getString("id")), resultSet.getString("name"),
-                    resultSet.getString("type"));
-        });
+        List<Unicorn> unicorns;
+
+        try {
+            unicorns = jdbcTemplate.query("SELECT * FROM unicorn", (resultSet, rowNum) -> {
+                return new Unicorn(UUID.fromString(resultSet.getString("id")), resultSet.getString("name"),
+                        resultSet.getString("type"));
+            });
+        } catch (BadSqlGrammarException exception){
+            unicorns = List.of();
+        }
 
         log.info("findAll->finished");
 
-        return primings;
+        return unicorns;
     }
 
 }

@@ -15,7 +15,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package software.amazon.awscdk.examples.priming;
+package software.amazon.awscdk.examples.unicorn;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,18 +24,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
-import software.amazon.awscdk.examples.priming.config.GsonConfig;
-import software.amazon.awscdk.examples.priming.config.PrimingConfig;
+import software.amazon.awscdk.examples.unicorn.config.GsonConfig;
+import software.amazon.awscdk.examples.unicorn.config.UnicornConfig;
 
-@Import({ PrimingConfig.class, GsonConfig.class })
+@Import({ UnicornConfig.class, GsonConfig.class })
 @SpringBootApplication(exclude = { JacksonAutoConfiguration.class })
-public class PrimingApplication {
+public class UnicornApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(PrimingApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(UnicornApplication.class);
 
     public static void main(String... arguments) {
         log.info("main->started");
-        SpringApplication.run(PrimingApplication.class, arguments);
+        SpringApplication.run(UnicornApplication.class, arguments);
         log.info("main->finished");
     }
 

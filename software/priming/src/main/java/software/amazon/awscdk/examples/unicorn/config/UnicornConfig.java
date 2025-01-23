@@ -15,27 +15,27 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package software.amazon.awscdk.examples.priming.config;
+package software.amazon.awscdk.examples.unicorn.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import software.amazon.awscdk.examples.priming.service.PrimingService;
+import software.amazon.awscdk.examples.unicorn.service.UnicornService;
 
 @Configuration
-@ComponentScan("software.amazon.awscdk.examples.priming")
-public class PrimingConfig {
+@ComponentScan("software.amazon.awscdk.examples.unicorn")
+public class UnicornConfig {
 
     @Autowired
-    private final PrimingService primingService;
+    private final UnicornService unicornService;
 
-    public PrimingConfig(PrimingService primingService) {
-        this.primingService = primingService;
+    public UnicornConfig(UnicornService unicornService) {
+        this.unicornService = unicornService;
     }
 
-    public PrimingService getPrimingService() {
-        return primingService;
+    public UnicornService getPrimingService() {
+        return unicornService;
     }
 
 }

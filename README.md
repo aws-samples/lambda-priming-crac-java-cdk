@@ -55,10 +55,10 @@ Priming is a mechanism to further optimize and enhance the performance of Lambda
    ```
 4. Run load test:
    ```
-   artillery run -t "$ONDEMAND_URL" -v '{ "url": "/priming" }' ./loadtest.yaml && \
-   artillery run -t "$NOPRIMING_URL" -v '{ "url": "/priming" }' ./loadtest.yaml && \
-   artillery run -t "$MANUALPRIMING_URL" -v '{ "url": "/priming" }' ./loadtest.yaml && \
-   artillery run -t "$AUTOMATICPRIMING_URL" -v '{ "url": "/priming" }' ./loadtest.yaml
+   artillery run -t "$ONDEMAND_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml && \
+   artillery run -t "$NOPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml && \
+   artillery run -t "$MANUALPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml && \
+   artillery run -t "$AUTOMATICPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml
    ```
 
 ## Measuring the results

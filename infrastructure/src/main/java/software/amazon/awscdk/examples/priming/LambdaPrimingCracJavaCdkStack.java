@@ -126,7 +126,7 @@ public class LambdaPrimingCracJavaCdkStack extends Stack {
         private DatabaseInstance createDatabaseInstance(IVpc vpc, SecurityGroup securityGroup,
                         DatabaseSecret databaseSecret) {
                 var engine = DatabaseInstanceEngine.postgres(
-                                PostgresInstanceEngineProps.builder().version(PostgresEngineVersion.VER_16_2).build());
+                                PostgresInstanceEngineProps.builder().version(PostgresEngineVersion.VER_16_4).build());
 
                 var databaseInstance = DatabaseInstance.Builder.create(this, "PrimingCracJavaDB")
                                 .engine(engine)

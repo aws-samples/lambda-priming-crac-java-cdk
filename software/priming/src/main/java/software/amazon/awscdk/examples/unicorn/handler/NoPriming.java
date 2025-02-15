@@ -62,17 +62,17 @@ public class NoPriming implements RequestHandler<UnicornRequest, UnicornResponse
         var awsLambdaInitializationType = System.getenv("AWS_LAMBDA_INITIALIZATION_TYPE");
         log.info("awsLambdaInitializationType: {}", awsLambdaInitializationType);
 
-        var primingResponse = new UnicornResponse();
-        primingResponse.setBody(gson.toJson(getPrimingDtos()));
-        primingResponse.setStatusCode(200);
+        var unicornResponse = new UnicornResponse();
+        unicornResponse.setBody(gson.toJson(getUnicornDtos()));
+        unicornResponse.setStatusCode(200);
 
         log.info("handleRequest->finished");
 
-        return primingResponse;
+        return unicornResponse;
     }
 
-    public List<UnicornDto> getPrimingDtos() {
-        log.info("getPrimingDtos->started");
+    public List<UnicornDto> getUnicornDtos() {
+        log.info("getUnicornDtos->started");
 
         List<Unicorn> unicorns = unicornService.read();
 
@@ -81,7 +81,7 @@ public class NoPriming implements RequestHandler<UnicornRequest, UnicornResponse
                         priming.type()))
                 .toList();
 
-        log.info("getPrimingDtos->finished");
+        log.info("getUnicornDtos->finished");
 
         return unicornDtos;
     }

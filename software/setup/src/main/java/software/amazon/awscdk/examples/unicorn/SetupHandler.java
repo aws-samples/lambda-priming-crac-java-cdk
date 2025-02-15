@@ -42,12 +42,16 @@ public class SetupHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGa
 
     private final String password;
 
+    private final Gson gson;
+
     public SetupHandler() {
         log.info("SetupHandler->started");
 
         this.url = System.getenv("DATABASE_URL");
         this.username = System.getenv("DATABASE_USERNAME");
         this.password = System.getenv("DATABASE_PASSWORD");
+
+        this.gson = new Gson();
 
         log.info("SetupHandler->finished");
     }
@@ -80,8 +84,6 @@ public class SetupHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGa
 
         JsonObject body = new JsonObject();
         body.addProperty("message", message);
-
-        Gson gson = new Gson();
 
         return APIGatewayV2HTTPResponse.builder().withStatusCode(200).withBody(gson.toJson(body)).build();
     }

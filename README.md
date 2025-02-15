@@ -44,7 +44,7 @@ Priming is a mechanism to further optimize and enhance the performance of Lambda
     SETUP_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 5 | tail -n 1)
    ```
 
-2. Initialize de database:
+2. Initialize the database:
    ```
    curl -X GET "$SETUP_URL"
    ```

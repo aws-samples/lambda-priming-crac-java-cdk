@@ -66,13 +66,13 @@ public class ManualPriming implements RequestHandler<UnicornRequest, UnicornResp
         var awsLambdaInitializationType = System.getenv("AWS_LAMBDA_INITIALIZATION_TYPE");
         log.info("awsLambdaInitializationType: {}", awsLambdaInitializationType);
 
-        var primingResponse = new UnicornResponse();
-        primingResponse.setBody(gson.toJson(getPrimingDtos()));
-        primingResponse.setStatusCode(200);
+        var unicornResponse = new UnicornResponse();
+        unicornResponse.setBody(gson.toJson(getUnicornDtos()));
+        unicornResponse.setStatusCode(200);
 
         log.info("handleRequest->finished");
 
-        return primingResponse;
+        return unicornResponse;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class ManualPriming implements RequestHandler<UnicornRequest, UnicornResp
 
         UnicornRequest unicornRequest = new UnicornRequest();
         unicornRequest.setHttpMethod("GET");
-        unicornRequest.setPath("/priming");
+        unicornRequest.setPath("/unicorn");
 
         handleRequest(unicornRequest, null);
 
@@ -95,8 +95,8 @@ public class ManualPriming implements RequestHandler<UnicornRequest, UnicornResp
         log.info("afterRestore->finished");
     }
 
-    public List<UnicornDto> getPrimingDtos() {
-        log.info("getPrimingDtos->started");
+    public List<UnicornDto> getUnicornDtos() {
+        log.info("getUnicornDtos->started");
 
         List<Unicorn> unicorns = unicornService.read();
 
@@ -105,7 +105,7 @@ public class ManualPriming implements RequestHandler<UnicornRequest, UnicornResp
                         priming.type()))
                 .toList();
 
-        log.info("getPrimingDtos->finished");
+        log.info("getUnicornDtos->finished");
 
         return unicornDtos;
     }

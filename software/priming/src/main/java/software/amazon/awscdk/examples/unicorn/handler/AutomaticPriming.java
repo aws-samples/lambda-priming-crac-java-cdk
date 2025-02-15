@@ -72,13 +72,13 @@ public class AutomaticPriming implements RequestHandler<UnicornRequest, UnicornR
         var awsLambdaInitializationType = System.getenv("AWS_LAMBDA_INITIALIZATION_TYPE");
         log.info("awsLambdaInitializationType: {}", awsLambdaInitializationType);
 
-        var primingResponse = new UnicornResponse();
-        primingResponse.setBody(gson.toJson(getPrimingDtos()));
-        primingResponse.setStatusCode(200);
+        var unicornResponse = new UnicornResponse();
+        unicornResponse.setBody(gson.toJson(getUnicornDtos()));
+        unicornResponse.setStatusCode(200);
 
         log.info("handleRequest->finished");
 
-        return primingResponse;
+        return unicornResponse;
     }
 
     @Override
@@ -112,8 +112,8 @@ public class AutomaticPriming implements RequestHandler<UnicornRequest, UnicornR
         log.info("afterRestore->finished");
     }
 
-    public List<UnicornDto> getPrimingDtos() {
-        log.info("getPrimingDtos->started");
+    public List<UnicornDto> getUnicornDtos() {
+        log.info("getUnicornDtos->started");
 
         List<Unicorn> unicorns = unicornService.read();
 
@@ -122,7 +122,7 @@ public class AutomaticPriming implements RequestHandler<UnicornRequest, UnicornR
                         priming.type()))
                 .toList();
 
-        log.info("getPrimingDtos->finished");
+        log.info("getUnicornDtos->finished");
 
         return unicornDtos;
     }

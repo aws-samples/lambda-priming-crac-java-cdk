@@ -34,7 +34,7 @@ public class UnicornConfig {
         this.unicornService = unicornService;
     }
 
-    public UnicornService getPrimingService() {
+    public UnicornService getUnicornService() {
         return unicornService;
     }
 

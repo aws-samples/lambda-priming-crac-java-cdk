@@ -17,13 +17,7 @@
  */
 package software.amazon.awscdk.examples.unicorn.handler;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.crac.Core;
 import org.crac.Resource;
@@ -34,25 +28,24 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
 import com.google.gson.Gson;
 
 import software.amazon.awscdk.examples.unicorn.UnicornApplication;
-import software.amazon.awscdk.examples.unicorn.dto.UnicornDto;
 import software.amazon.awscdk.examples.unicorn.model.Unicorn;
-import software.amazon.awscdk.examples.unicorn.model.UnicornRequest;
-import software.amazon.awscdk.examples.unicorn.model.UnicornResponse;
 import software.amazon.awscdk.examples.unicorn.service.UnicornService;
 
-public class AutomaticPriming implements RequestHandler<UnicornRequest, UnicornResponse>, Resource {
+public class InvokePriming implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse>, Resource {
 
-    private static final Logger log = LoggerFactory.getLogger(AutomaticPriming.class);
+    private static final Logger log = LoggerFactory.getLogger(InvokePriming.class);
 
     private final UnicornService unicornService;
 
     private final Gson gson;
 
-    public AutomaticPriming() {
-        log.info("AutomaticPriming->started");
+    public InvokePriming() {
+        log.info("InvokePriming->started");
 
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(UnicornApplication.class,
                 new String[] {});
@@ -62,23 +55,22 @@ public class AutomaticPriming implements RequestHandler<UnicornRequest, UnicornR
 
         Core.getGlobalContext().register(this);
 
-        log.info("AutomaticPriming->finished");
+        log.info("InvokePriming->finished");
     }
 
     @Override
-    public UnicornResponse handleRequest(UnicornRequest request, Context context) {
+    public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context) {
         log.info("handleRequest->started");
 
         var awsLambdaInitializationType = System.getenv("AWS_LAMBDA_INITIALIZATION_TYPE");
         log.info("awsLambdaInitializationType: {}", awsLambdaInitializationType);
 
-        var unicornResponse = new UnicornResponse();
-        unicornResponse.setBody(gson.toJson(getUnicornDtos()));
-        unicornResponse.setStatusCode(200);
+        var unicorns = getUnicorns();
+        var body = gson.toJson(unicorns);
 
         log.info("handleRequest->finished");
 
-        return unicornResponse;
+        return APIGatewayV2HTTPResponse.builder().withStatusCode(200).withBody(body).build();
     }
 
     @Override
@@ -86,24 +78,11 @@ public class AutomaticPriming implements RequestHandler<UnicornRequest, UnicornR
             throws Exception {
         log.info("beforeCheckpoint->started");
 
-        Path path = Paths.get("classes-loaded.txt");
+        var event = APIGatewayV2HTTPEvent.builder().build();
 
-        try (BufferedReader bufferedReader = Files.newBufferedReader(path)) {
-            Stream<String> lines = bufferedReader.lines();
-            lines.forEach(this::preLoadClass);
-        } catch (IOException exception) {
-            log.error("Error on newBufferedReader", exception);
-        }
+        handleRequest(event, null);
 
         log.info("beforeCheckpoint->finished");
-    }
-
-    private void preLoadClass(String name) {
-        try {
-            Class.forName(name, true,
-                    AutomaticPriming.class.getClassLoader());
-        } catch (Throwable ignored) {
-        }
     }
 
     @Override
@@ -112,19 +91,14 @@ public class AutomaticPriming implements RequestHandler<UnicornRequest, UnicornR
         log.info("afterRestore->finished");
     }
 
-    public List<UnicornDto> getUnicornDtos() {
-        log.info("getUnicornDtos->started");
+    public List<Unicorn> getUnicorns() {
+        log.info("getUnicorns->started");
 
         List<Unicorn> unicorns = unicornService.read();
 
-        List<UnicornDto> unicornDtos = unicorns.stream()
-                .map(priming -> new UnicornDto(priming.id(), priming.name(),
-                        priming.type()))
-                .toList();
+        log.info("getUnicorns->finished");
 
-        log.info("getUnicornDtos->finished");
-
-        return unicornDtos;
+        return unicorns;
     }
 
 }

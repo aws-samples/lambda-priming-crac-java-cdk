@@ -26,16 +26,15 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
 import com.google.gson.Gson;
 
 import software.amazon.awscdk.examples.unicorn.UnicornApplication;
-import software.amazon.awscdk.examples.unicorn.dto.UnicornDto;
 import software.amazon.awscdk.examples.unicorn.model.Unicorn;
-import software.amazon.awscdk.examples.unicorn.model.UnicornRequest;
-import software.amazon.awscdk.examples.unicorn.model.UnicornResponse;
 import software.amazon.awscdk.examples.unicorn.service.UnicornService;
 
-public class NoPriming implements RequestHandler<UnicornRequest, UnicornResponse> {
+public class NoPriming implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
 
     private static final Logger log = LoggerFactory.getLogger(NoPriming.class);
 
@@ -56,34 +55,28 @@ public class NoPriming implements RequestHandler<UnicornRequest, UnicornResponse
     }
 
     @Override
-    public UnicornResponse handleRequest(UnicornRequest request, Context context) {
+    public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context) {
         log.info("handleRequest->started");
 
         var awsLambdaInitializationType = System.getenv("AWS_LAMBDA_INITIALIZATION_TYPE");
         log.info("awsLambdaInitializationType: {}", awsLambdaInitializationType);
 
-        var unicornResponse = new UnicornResponse();
-        unicornResponse.setBody(gson.toJson(getUnicornDtos()));
-        unicornResponse.setStatusCode(200);
+        var unicorns = getUnicorns();
+        var body = gson.toJson(unicorns);
 
         log.info("handleRequest->finished");
 
-        return unicornResponse;
+        return APIGatewayV2HTTPResponse.builder().withStatusCode(200).withBody(body).build();
     }
 
-    public List<UnicornDto> getUnicornDtos() {
-        log.info("getUnicornDtos->started");
+    public List<Unicorn> getUnicorns() {
+        log.info("getUnicorns->started");
 
         List<Unicorn> unicorns = unicornService.read();
 
-        List<UnicornDto> unicornDtos = unicorns.stream()
-                .map(priming -> new UnicornDto(priming.id(), priming.name(),
-                        priming.type()))
-                .toList();
+        log.info("getUnicorns->finished");
 
-        log.info("getUnicornDtos->finished");
-
-        return unicornDtos;
+        return unicorns;
     }
 
 }

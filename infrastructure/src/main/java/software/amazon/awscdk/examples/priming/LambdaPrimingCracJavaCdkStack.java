@@ -19,6 +19,7 @@ package software.amazon.awscdk.examples.priming;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +46,7 @@ import software.amazon.awscdk.services.lambda.Code;
 import software.amazon.awscdk.services.lambda.Function;
 import software.amazon.awscdk.services.lambda.Runtime;
 import software.amazon.awscdk.services.lambda.SnapStartConf;
+import software.amazon.awscdk.services.lambda.Version;
 import software.amazon.awscdk.services.logs.LogGroup;
 import software.amazon.awscdk.services.logs.RetentionDays;
 import software.amazon.awscdk.services.rds.Credentials;
@@ -60,235 +62,243 @@ import software.constructs.Construct;
 
 public class LambdaPrimingCracJavaCdkStack extends Stack {
 
-        private static final String PRIME_TYPE_ON_DEMAND = "ON_DEMAND";
-        private static final String PRIME_TYPE_NO_PRIMING = "NO_PRIMING";
-        private static final String PRIME_TYPE_MANUAL_PRIMING = "MANUAL_PRIMING";
-        private static final String PRIME_TYPE_AUTOMATIC_PRIMING = "AUTOMATIC_PRIMING";
+    private static final String PRIME_TYPE_ON_DEMAND = "1_ON_DEMAND";
+    private static final String PRIME_TYPE_NO_PRIMING = "2_SnapStart_NO_PRIMING";
+    private static final String PRIME_TYPE_INVOKE_PRIMING = "3_SnapStart_INVOKE_PRIMING";
+    private static final String PRIME_TYPE_CLASS_PRIMING = "4_SnapStart_CLASS_PRIMING";
+    private static final String DB_LOADER = "5_DB_LOADER";
+    private static final String DB_LOADER_FUNCTION_CODE_PATH = "../software/setup/";
+    private static final String PRIMING_FUNCTION_CODE_PATH = "../software/priming/";
+    private static final String DB_LOADER_FUNCTION_JAR_NAME = "software-setup-0.1.jar";
+    private static final String PRIMING_FUNCTION_JAR_NAME = "software-priming-0.1.jar";
+    private static final String COPY_FROM_PATH = "/asset-input/target/";
+    private static final String COPY_TO_PATH = "/asset-output/";
 
-        public LambdaPrimingCracJavaCdkStack(final Construct scope, final String id) {
-                this(scope, id, null);
+    public LambdaPrimingCracJavaCdkStack(final Construct scope, final String id) {
+        this(scope, id, null);
+    }
+
+    public LambdaPrimingCracJavaCdkStack(final Construct scope, final String id, final StackProps props) {
+        super(scope, id, props);
+
+        var vpc = createVpc();
+        var securityGroupDatabase = createSecurityGroupDatabase(vpc);
+        var databaseSecret = createDatabaseSecret();
+        var databaseInstance = createDatabaseInstance(vpc, securityGroupDatabase, databaseSecret);
+        var databaseProxy = createDatabaseProxy(vpc, databaseSecret, securityGroupDatabase, databaseInstance);
+
+        var databaseUsername = databaseSecret.secretValueFromJson("username").unsafeUnwrap();
+
+        var databaseUrl = "jdbc:postgresql://%s:%s/%s".formatted(
+                databaseProxy.getEndpoint(),
+                databaseInstance.getDbInstanceEndpointPort(),
+                databaseUsername);
+
+        var databasePassword = databaseSecret.secretValueFromJson("password")
+                .unsafeUnwrap()
+                .toString();
+
+        var buildOptions = configBuildOptions();
+
+        createFunctions(vpc, buildOptions, databaseUrl, databaseUsername, databasePassword);
+    }
+
+    private Vpc createVpc() {
+        return Vpc.Builder.create(this, "PrimingCracJavaVpc")
+                .natGateways(0)
+                .build();
+    }
+
+    private SecurityGroup createSecurityGroupDatabase(IVpc vpc) {
+        var securityGroup = SecurityGroup.Builder.create(this, "PrimingCracJavaSGDatabase")
+                .securityGroupName("PrimingCracJavaSGDatabase")
+                .allowAllOutbound(Boolean.FALSE)
+                .vpc(vpc)
+                .build();
+
+        securityGroup.addIngressRule(
+                Peer.ipv4("10.0.0.0/16"),
+                Port.tcp(5432),
+                "Allow database traffic from local network");
+
+        return securityGroup;
+    }
+
+    private DatabaseSecret createDatabaseSecret() {
+        return DatabaseSecret.Builder
+                .create(this, "PrimingCracJavaDatabaseSecret")
+                .secretName("PrimingCracJavaDatabaseSecret")
+                .username("postgres").build();
+    }
+
+    private DatabaseInstance createDatabaseInstance(IVpc vpc, SecurityGroup securityGroup,
+            DatabaseSecret databaseSecret) {
+        var engine = DatabaseInstanceEngine.postgres(
+                PostgresInstanceEngineProps.builder().version(PostgresEngineVersion.VER_16_4).build());
+
+        var databaseInstance = DatabaseInstance.Builder.create(this, "PrimingCracJavaDB")
+                .engine(engine)
+                .vpc(vpc)
+                .allowMajorVersionUpgrade(true)
+                .backupRetention(Duration.days(0))
+                .databaseName("priming_crac_java_db")
+                .instanceIdentifier("PrimingCracJavaDBInstance")
+                .instanceType(InstanceType.of(InstanceClass.BURSTABLE3, InstanceSize.MEDIUM))
+                .vpcSubnets(SubnetSelection.builder()
+                        .subnetType(SubnetType.PRIVATE_ISOLATED)
+                        .build())
+                .securityGroups(List.of(securityGroup))
+                .credentials(Credentials.fromSecret(databaseSecret))
+                .build();
+
+        return databaseInstance;
+    }
+
+    private DatabaseProxy createDatabaseProxy(IVpc vpc, DatabaseSecret databaseSecret, SecurityGroup securityGroup,
+            DatabaseInstance databaseInstance) {
+        return DatabaseProxy.Builder.create(this, "PrimingCracJavaDBProxy")
+                .vpc(vpc)
+                .secrets(List.of(databaseSecret))
+                .securityGroups(List.of(securityGroup))
+                .iamAuth(Boolean.FALSE)
+                .proxyTarget(ProxyTarget.fromInstance(databaseInstance))
+                .build();
+    }
+
+    private BundlingOptions.Builder configBuildOptions() {
+        return BundlingOptions.builder()
+                .image(Runtime.JAVA_21.getBundlingImage())
+                .volumes(Collections.singletonList(
+                        DockerVolume.builder()
+                                .hostPath("%s/.m2/".formatted(
+                                        System.getProperty("user.home")))
+                                .containerPath("/root/.m2/")
+                                .build()))
+                .user("root")
+                .outputType(BundlingOutput.ARCHIVED);
+    }
+
+    private void createFunctions(IVpc vpc, BundlingOptions.Builder buildOptions,
+            String databaseUrl,
+            String databaseUsername,
+            String databasePassword) {
+
+        var dbLoaderCode = createCodePackage(buildOptions,
+                DB_LOADER_FUNCTION_CODE_PATH,
+                DB_LOADER_FUNCTION_JAR_NAME,
+                COPY_FROM_PATH,
+                COPY_TO_PATH);
+
+        var primingCode = createCodePackage(buildOptions,
+                PRIMING_FUNCTION_CODE_PATH,
+                PRIMING_FUNCTION_JAR_NAME,
+                COPY_FROM_PATH,
+                COPY_TO_PATH);
+
+        // Function for initial DB data Loader
+        createFunction(vpc, dbLoaderCode, DB_LOADER,
+                "software.amazon.awscdk.examples.unicorn.SetupHandler",
+                null,
+                databaseUrl,
+                databaseUsername,
+                databasePassword,
+                DB_LOADER_FUNCTION_CODE_PATH);
+
+        // Function for ON_DEMAND without enabling SnapStart
+        createFunction(vpc, primingCode, PRIME_TYPE_ON_DEMAND,
+                "software.amazon.awscdk.examples.unicorn.handler.NoPriming",
+                null,
+                databaseUrl,
+                null,
+                databasePassword,
+                PRIMING_FUNCTION_CODE_PATH);
+
+        // Function for SnapStart without priming
+        createFunction(vpc, primingCode, PRIME_TYPE_NO_PRIMING,
+                "software.amazon.awscdk.examples.unicorn.handler.NoPriming",
+                SnapStartConf.ON_PUBLISHED_VERSIONS,
+                databaseUrl,
+                null,
+                databasePassword,
+                PRIMING_FUNCTION_CODE_PATH);
+
+        // Function for SnapStart with INVOKE priming
+        createFunction(vpc, primingCode, PRIME_TYPE_INVOKE_PRIMING,
+                "software.amazon.awscdk.examples.unicorn.handler.InvokePriming",
+                SnapStartConf.ON_PUBLISHED_VERSIONS,
+                databaseUrl,
+                null,
+                databasePassword,
+                PRIMING_FUNCTION_CODE_PATH);
+
+        // Function for SnapStart with CLASS priming
+        createFunction(vpc, primingCode, PRIME_TYPE_CLASS_PRIMING,
+                "software.amazon.awscdk.examples.unicorn.handler.ClassPriming",
+                SnapStartConf.ON_PUBLISHED_VERSIONS,
+                databaseUrl,
+                null,
+                databasePassword,
+                PRIMING_FUNCTION_CODE_PATH);
+
+    }
+
+    private void createFunction(IVpc vpc, Code code, String primeType, String handler,
+            SnapStartConf snapStartConf,
+            String databaseUrl,
+            String databaseUsername,
+            String databasePassword,
+            String functionCodePath) {
+        Map<String, String> environmentVariables = new HashMap<>();
+        environmentVariables.put("SPRING_DATASOURCE_URL", databaseUrl);
+        environmentVariables.put("SPRING_DATASOURCE_PASSWORD", databasePassword);
+        if (databaseUsername != null) {
+            environmentVariables.put("SPRING_DATABASE_USERNAME", databaseUsername);
         }
 
-        public LambdaPrimingCracJavaCdkStack(final Construct scope, final String id, final StackProps props) {
-                super(scope, id, props);
+        var logGroup = LogGroup.Builder.create(this, "PrimingLogGroup-%s".formatted(primeType))
+                .retention(RetentionDays.THREE_DAYS)
+                .logGroupName("/aws/lambda/%s".formatted("PrimingLogGroup-%s".formatted(primeType)))
+                .removalPolicy(RemovalPolicy.DESTROY)
+                .build();
 
-                var vpc = createVpc();
-                var securityGroupDatabase = createSecurityGroupDatabase(vpc);
-                var databaseSecret = createDatabaseSecret();
-                var databaseInstance = createDatabaseInstance(vpc, securityGroupDatabase, databaseSecret);
-                var databaseProxy = createDatabaseProxy(vpc, databaseSecret, securityGroupDatabase, databaseInstance);
+        var function = Function.Builder.create(this, "PrimingJavaLambdaFunction-%s".formatted(primeType))
+                .functionName("PrimingJavaLambdaFunction-%s".formatted(primeType))
+                .code(code)
+                .handler(handler)
+                .snapStart(snapStartConf)
+                .architecture(Architecture.ARM_64)
+                .memorySize(2048)
+                .timeout(Duration.seconds(29))
+                .environment(environmentVariables)
+                .runtime(Runtime.JAVA_21)
+                .vpc(vpc)
+                .logGroup(logGroup)
+                .build();
 
-                var databaseUsername = databaseSecret.secretValueFromJson("username").unsafeUnwrap();
+        var functionCurrentVersion = function.getCurrentVersion();
+        createLambdaRestApiIntegration("PrimingJavaRestApi-%s".formatted(primeType), functionCurrentVersion);
+    }
 
-                var databaseUrl = "jdbc:postgresql://%s:%s/%s".formatted(
-                                databaseProxy.getEndpoint(),
-                                databaseInstance.getDbInstanceEndpointPort(),
-                                databaseUsername);
+    private void createLambdaRestApiIntegration(String restApiName, Version version) {
+        LambdaRestApi.Builder.create(this, restApiName)
+                .restApiName(restApiName)
+                .handler(version)
+                .build();
+    }
 
-                var databasePassword = databaseSecret.secretValueFromJson("password")
-                                .unsafeUnwrap()
-                                .toString();
+    private Code createCodePackage(BundlingOptions.Builder buildOptions, String codePath, String jarName,
+            String copyFrom, String copyTo) {
+        var command = Arrays.asList(
+                "/bin/sh",
+                "-c",
+                String.format("mvn clean install package && cp %s%s %s",
+                        copyFrom, jarName, copyTo));
 
-                var bundlingOptionsBuilder = createBundlingOptionsBuilder();
-
-                createFunctionSetup(vpc, bundlingOptionsBuilder, databaseUrl, databaseUsername, databasePassword);
-                createFunctionPrimingAll(vpc, bundlingOptionsBuilder, databaseUrl, databasePassword);
-        }
-
-        private Vpc createVpc() {
-                return Vpc.Builder.create(this, "PrimingCracJavaVpc")
-                                .natGateways(0)
-                                .build();
-        }
-
-        private SecurityGroup createSecurityGroupDatabase(IVpc vpc) {
-                var securityGroup = SecurityGroup.Builder.create(this, "PrimingCracJavaSGDatabase")
-                                .securityGroupName("PrimingCracJavaSGDatabase")
-                                .allowAllOutbound(Boolean.FALSE)
-                                .vpc(vpc)
-                                .build();
-
-                securityGroup.addIngressRule(
-                                Peer.ipv4("10.0.0.0/16"),
-                                Port.tcp(5432),
-                                "Allow database traffic from local network");
-
-                return securityGroup;
-        }
-
-        private DatabaseSecret createDatabaseSecret() {
-                return DatabaseSecret.Builder
-                                .create(this, "PrimingCracJavaDatabaseSecret")
-                                .secretName("PrimingCracJavaDatabaseSecret")
-                                .username("postgres").build();
-        }
-
-        private DatabaseInstance createDatabaseInstance(IVpc vpc, SecurityGroup securityGroup,
-                        DatabaseSecret databaseSecret) {
-                var engine = DatabaseInstanceEngine.postgres(
-                                PostgresInstanceEngineProps.builder().version(PostgresEngineVersion.VER_16_4).build());
-
-                var databaseInstance = DatabaseInstance.Builder.create(this, "PrimingCracJavaDB")
-                                .engine(engine)
-                                .vpc(vpc)
-                                .allowMajorVersionUpgrade(true)
-                                .backupRetention(Duration.days(0))
-                                .databaseName("priming_crac_java_db")
-                                .instanceIdentifier("PrimingCracJavaDBInstance")
-                                .instanceType(InstanceType.of(InstanceClass.BURSTABLE3, InstanceSize.MEDIUM))
-                                .vpcSubnets(SubnetSelection.builder()
-                                                .subnetType(SubnetType.PRIVATE_ISOLATED)
-                                                .build())
-                                .securityGroups(List.of(securityGroup))
-                                .credentials(Credentials.fromSecret(databaseSecret))
-                                .build();
-
-                return databaseInstance;
-        }
-
-        private DatabaseProxy createDatabaseProxy(IVpc vpc, DatabaseSecret databaseSecret, SecurityGroup securityGroup,
-                        DatabaseInstance databaseInstance) {
-                return DatabaseProxy.Builder.create(this, "PrimingCracJavaDBProxy")
-                                .vpc(vpc)
-                                .secrets(List.of(databaseSecret))
-                                .securityGroups(List.of(securityGroup))
-                                .iamAuth(Boolean.FALSE)
-                                .proxyTarget(ProxyTarget.fromInstance(databaseInstance))
-                                .build();
-        }
-
-        private BundlingOptions.Builder createBundlingOptionsBuilder() {
-                return BundlingOptions.builder()
-                                .image(Runtime.JAVA_21.getBundlingImage())
-                                .volumes(Collections.singletonList(
-                                                DockerVolume.builder()
-                                                                .hostPath("%s/.m2/".formatted(
-                                                                                System.getProperty("user.home")))
-                                                                .containerPath("/root/.m2/")
-                                                                .build()))
-                                .user("root")
-                                .outputType(BundlingOutput.ARCHIVED);
-        }
-
-        private Code createCodeSetup(BundlingOptions.Builder bundlingOptionsBuilder) {
-                var command = Arrays.asList(
-                                "/bin/sh",
-                                "-c",
-                                "mvn clean install package && cp /asset-input/target/software-setup-0.1.jar /asset-output/");
-
-                return Code.fromAsset("../software/setup/", AssetOptions.builder()
-                                .bundling(bundlingOptionsBuilder
-                                                .command(command)
-                                                .build())
-                                .build());
-        }
-
-        private void createFunctionSetup(IVpc vpc, BundlingOptions.Builder bundlingOptionsBuilder, String databaseUrl,
-                        String databaseUsername,
-                        String databasePassword) {
-                var logGroup = LogGroup.Builder.create(this, "PrimingCracJavaLogGroupSetup")
-                                .retention(RetentionDays.THREE_DAYS)
-                                .logGroupName("/aws/lambda/%s".formatted("PrimingCracJavaLogGroupSetup"))
-                                .removalPolicy(RemovalPolicy.DESTROY)
-                                .build();
-
-                var code = createCodeSetup(bundlingOptionsBuilder);
-
-                var function = Function.Builder.create(this, "PrimingCracJavaFunctionSetup")
-                                .code(code)
-                                .handler("software.amazon.awscdk.examples.unicorn.SetupHandler")
-                                .architecture(Architecture.ARM_64)
-                                .memorySize(1024)
-                                .timeout(Duration.seconds(900))
-                                .environment(
-                                                Map.of(
-                                                                "DATABASE_URL", databaseUrl, "DATABASE_USERNAME",
-                                                                databaseUsername, "DATABASE_PASSWORD",
-                                                                databasePassword))
-                                .runtime(Runtime.JAVA_21)
-                                .vpc(vpc)
-                                .logGroup(logGroup)
-                                .build();
-
-                createLambdaRestApi("PrimingCracJavaRestApiSetup", function);
-        }
-
-        private Code createCodePriming(BundlingOptions.Builder bundlingOptionsBuilder) {
-                var command = Arrays.asList(
-                                "/bin/sh",
-                                "-c",
-                                "mvn clean install package && cp /asset-input/target/software-priming-0.1.jar /asset-output/");
-
-                return Code.fromAsset("../software/priming/", AssetOptions.builder()
-                                .bundling(bundlingOptionsBuilder
-                                                .command(command)
-                                                .build())
-                                .build());
-        }
-
-        private void createFunctionPrimingAll(IVpc vpc, BundlingOptions.Builder bundlingOptionsBuilder,
-                        String databaseUrl,
-                        String databasePassword) {
-                var code = createCodePriming(bundlingOptionsBuilder);
-
-                createFunctionPriming(vpc, code, PRIME_TYPE_ON_DEMAND,
-                                "software.amazon.awscdk.examples.unicorn.handler.NoPriming", null, databaseUrl,
-                                databasePassword);
-
-                createFunctionPriming(vpc, code, PRIME_TYPE_NO_PRIMING,
-                                "software.amazon.awscdk.examples.unicorn.handler.NoPriming",
-                                SnapStartConf.ON_PUBLISHED_VERSIONS,
-                                databaseUrl,
-                                databasePassword);
-
-                createFunctionPriming(vpc, code, PRIME_TYPE_MANUAL_PRIMING,
-                                "software.amazon.awscdk.examples.unicorn.handler.ManualPriming",
-                                SnapStartConf.ON_PUBLISHED_VERSIONS,
-                                databaseUrl,
-                                databasePassword);
-
-                createFunctionPriming(vpc, code, PRIME_TYPE_AUTOMATIC_PRIMING,
-                                "software.amazon.awscdk.examples.unicorn.handler.AutomaticPriming",
-                                SnapStartConf.ON_PUBLISHED_VERSIONS,
-                                databaseUrl,
-                                databasePassword);
-        }
-
-        private void createFunctionPriming(IVpc vpc, Code code, String primeType, String handler,
-                        SnapStartConf snapStartConf, String databaseUrl,
-                        String databasePassword) {
-                var logGroup = LogGroup.Builder.create(this, "PrimingCracJavaLogGroupPriming-%s".formatted(primeType))
-                                .retention(RetentionDays.THREE_DAYS)
-                                .logGroupName("/aws/lambda/%s-%s".formatted("PrimingCracJavaLogGroupPriming",
-                                                primeType))
-                                .removalPolicy(RemovalPolicy.DESTROY)
-                                .build();
-
-                var function = Function.Builder.create(this, "PrimingCracJavaFunctionPriming-%s".formatted(primeType))
-                                .code(code)
-                                .handler(handler)
-                                .snapStart(snapStartConf)
-                                .architecture(Architecture.ARM_64)
-                                .memorySize(2048)
-                                .timeout(Duration.seconds(29))
-                                .environment(
-                                                Map.of(
-                                                                "SPRING_DATASOURCE_URL", databaseUrl,
-                                                                "SPRING_DATASOURCE_PASSWORD",
-                                                                databasePassword))
-                                .runtime(Runtime.JAVA_21)
-                                .vpc(vpc)
-                                .logGroup(logGroup)
-                                .build();
-
-                createLambdaRestApi("PrimingCracJavaRestApiPriming-%s".formatted(primeType), function);
-        }
-
-        private void createLambdaRestApi(String restApiName, Function function) {
-                LambdaRestApi.Builder.create(this, restApiName)
-                                .restApiName(restApiName)
-                                .handler(function.getCurrentVersion())
-                                .build();
-        }
+        return Code.fromAsset(codePath, AssetOptions.builder()
+                .bundling(buildOptions
+                        .command(command)
+                        .build())
+                .build());
+    }
 
 }

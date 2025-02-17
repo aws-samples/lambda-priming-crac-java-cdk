@@ -18,8 +18,11 @@
 package software.amazon.awscdk.examples.unicorn.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import com.google.gson.Gson;
 
 import software.amazon.awscdk.examples.unicorn.service.UnicornService;
 
@@ -30,12 +33,20 @@ public class UnicornConfig {
     @Autowired
     private final UnicornService unicornService;
 
+    private final Gson gson;
+
     public UnicornConfig(UnicornService unicornService) {
         this.unicornService = unicornService;
+        this.gson = new Gson();
     }
 
     public UnicornService getUnicornService() {
         return unicornService;
+    }
+
+    @Bean
+    public Gson getGson() {
+        return gson;
     }
 
 }

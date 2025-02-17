@@ -47,9 +47,9 @@ public class SetupHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGa
     public SetupHandler() {
         log.info("SetupHandler->started");
 
-        this.url = System.getenv("DATABASE_URL");
-        this.username = System.getenv("DATABASE_USERNAME");
-        this.password = System.getenv("DATABASE_PASSWORD");
+        this.url = System.getenv("SPRING_DATASOURCE_URL");
+        this.username = System.getenv("SPRING_DATABASE_USERNAME");
+        this.password = System.getenv("SPRING_DATASOURCE_PASSWORD");
 
         this.gson = new Gson();
 

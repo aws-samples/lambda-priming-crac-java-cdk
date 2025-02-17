@@ -21,14 +21,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
-import software.amazon.awscdk.examples.unicorn.config.GsonConfig;
 import software.amazon.awscdk.examples.unicorn.config.UnicornConfig;
 
-@Import({ UnicornConfig.class, GsonConfig.class })
-@SpringBootApplication(exclude = { JacksonAutoConfiguration.class })
+@Import({ UnicornConfig.class })
+@SpringBootApplication
 public class UnicornApplication {
 
     private static final Logger log = LoggerFactory.getLogger(UnicornApplication.class);

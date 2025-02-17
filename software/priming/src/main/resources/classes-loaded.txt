@@ -3351,6 +3351,12 @@ org.springframework.web.context.support.GenericWebApplicationContext
 org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext
 org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext
 com.google.gson.Gson
+com.google.gson.GsonBuilder
+com.google.gson.ExclusionStrategy
+com.google.gson.FieldAttributes
+java.lang.reflect.Field
+java.util.Collection
+java.util.Map
 org.springframework.context.event.ContextStartedEvent
 org.springframework.context.event.ContextStoppedEvent
 org.springframework.context.support.AbstractApplicationContext$1
@@ -3635,7 +3641,6 @@ org.springframework.context.annotation.Description
 org.springframework.beans.factory.support.BeanDefinitionReaderUtils
 sun.reflect.annotation.AnnotationParser$$Lambda/0x000000060207bdb8
 software.amazon.awscdk.examples.unicorn.config.UnicornConfig
-software.amazon.awscdk.examples.unicorn.config.GsonConfig
 jdk.proxy2.$Proxy18
 org.springframework.boot.autoconfigure.SpringBootApplication
 jdk.proxy1.$Proxy19
@@ -4176,7 +4181,6 @@ org.springframework.boot.autoconfigure.condition.OnPropertyCondition$Spec
 org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration$BeanPostProcessorsRegistrar
 org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DispatcherServletRegistrationCondition
 org.springframework.boot.web.servlet.ServletRegistrationBean
-software.amazon.awscdk.examples.unicorn.controller.PrimingController
 software.amazon.awscdk.examples.unicorn.repository.UnicornRepository
 org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DefaultDispatcherServletCondition
 org.springframework.boot.autoconfigure.condition.ConditionalOnThreading
@@ -4877,7 +4881,6 @@ org.springframework.cglib.proxy.Enhancer$EnhancerFactoryData
 java.lang.invoke.LambdaForm$MH/0x0000000602291c00
 java.lang.invoke.LambdaForm$MH/0x0000000602292000
 java.lang.invoke.LambdaForm$MH/0x0000000602292400
-software.amazon.awscdk.examples.unicorn.config.GsonConfig$$SpringCGLIB$$0
 org.springframework.cglib.proxy.MethodProxy$FastClassInfo
 org.springframework.cglib.reflect.FastClass$Generator
 org.springframework.cglib.reflect.FastClass
@@ -4893,8 +4896,8 @@ org.springframework.cglib.core.EmitUtils$$Lambda/0x0000000602295fa0
 org.springframework.cglib.core.EmitUtils$7
 org.springframework.cglib.core.Block
 org.springframework.cglib.reflect.FastClassEmitter$2
-software.amazon.awscdk.examples.unicorn.config.GsonConfig$$SpringCGLIB$$FastClass$$0
-software.amazon.awscdk.examples.unicorn.config.GsonConfig$$SpringCGLIB$$FastClass$$1
+software.amazon.awscdk.examples.unicorn.config.UnicornConfig$$SpringCGLIB$$FastClass$$0
+software.amazon.awscdk.examples.unicorn.config.UnicornConfig$$SpringCGLIB$$FastClass$$1
 software.amazon.awscdk.examples.unicorn.config.UnicornConfig$$SpringCGLIB$$0
 org.springframework.context.annotation.ConfigurationClassPostProcessor$$Lambda/0x0000000602296f98
 org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor
@@ -5592,7 +5595,7 @@ com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2
 com.google.gson.reflect.TypeToken
 com.google.gson.Strictness
 com.google.gson.ExclusionStrategy
-software.amazon.awscdk.examples.unicorn.config.GsonConfig$1
+software.amazon.awscdk.examples.unicorn.config.UnicornConfig$1
 org.springframework.http.HttpInputMessage
 org.springframework.http.HttpHeaders
 org.springframework.web.servlet.config.annotation.WebMvcConfigurerComposite

@@ -36,12 +36,12 @@ Priming is a mechanism to further optimize and enhance the performance of Lambda
 ## Testing
 
 1. Extract URLs:
-    ```
-    AUTOMATICPRIMING_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 1) \
-    MANUALPRIMING_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 2 | tail -n 1) \
-    NOPRIMING_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 3 | tail -n 1) \
-    ONDEMAND_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 4 | tail -n 1) \
-    SETUP_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 5 | tail -n 1)
+   ```
+   ONDEMAND_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 1) \
+   NOPRIMING_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 2 | tail -n 1) \
+   INVOKEPRIMING_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 3 | tail -n 1) \
+   CLASSPRIMING_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 4 | tail -n 1) \
+   SETUP_URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.execute-api\.[a-zA-Z0-9-]+\.amazonaws\.com/prod/' "cdk_output.txt" | head -n 5 | tail -n 1)
    ```
 
 2. Initialize the database:
@@ -57,8 +57,8 @@ Priming is a mechanism to further optimize and enhance the performance of Lambda
    ```
    artillery run -t "$ONDEMAND_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml && \
    artillery run -t "$NOPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml && \
-   artillery run -t "$MANUALPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml && \
-   artillery run -t "$AUTOMATICPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml
+   artillery run -t "$INVOKEPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml && \
+   artillery run -t "$CLASSPRIMING_URL" -v '{ "url": "/unicorn" }' ./loadtest.yaml
    ```
 
 ## Measuring the results
@@ -82,10 +82,10 @@ group by function, (ispresent(@initDuration) or ispresent(restoreDuration)) as c
 Select the log groups bellow:
 
 ```
-/aws/lambda/PrimingCracJavaLogGroupPriming-ON_DEMAND
-/aws/lambda/PrimingCracJavaLogGroupPriming-NO_PRIMING
-/aws/lambda/PrimingCracJavaLogGroupPriming-MANUAL_PRIMING
-/aws/lambda/PrimingCracJavaLogGroupPriming-AUTOMATIC_PRIMING
+/aws/lambda/PrimingLogGroup-1_ON_DEMAND
+/aws/lambda/PrimingLogGroup-2_SnapStart_NO_PRIMING
+/aws/lambda/PrimingLogGroup-3_SnapStart_INVOKE_PRIMING
+/aws/lambda/PrimingLogGroup-4_SnapStart_CLASS_PRIMING
 ```
 
 ## Clean-up

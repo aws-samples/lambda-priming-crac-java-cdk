@@ -17,15 +17,16 @@
  */
 package software.amazon.awscdk.examples.unicorn.repository;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import software.amazon.awscdk.examples.unicorn.model.Unicorn;
 
-import java.util.List;
-import java.util.UUID;
+import software.amazon.awscdk.examples.unicorn.model.Unicorn;
 
 @Repository
 public class UnicornRepository {
@@ -37,7 +38,7 @@ public class UnicornRepository {
     public UnicornRepository(JdbcTemplate jdbcTemplate) {
         log.info("UnicornRepository->started");
         this.jdbcTemplate = jdbcTemplate;
-        log.info("v->finished");
+        log.info("UnicornRepository->finished");
     }
 
     public List<Unicorn> findAll() {
@@ -50,7 +51,10 @@ public class UnicornRepository {
                 return new Unicorn(UUID.fromString(resultSet.getString("id")), resultSet.getString("name"),
                         resultSet.getString("type"));
             });
-        } catch (BadSqlGrammarException exception){
+        } catch (BadSqlGrammarException exception) {
+            unicorns = List.of();
+        } catch (Exception exception) {
+            log.error("findAll->error: {}", exception.getMessage());
             unicorns = List.of();
         }
 

@@ -17,13 +17,7 @@
  */
 package software.amazon.awscdk.examples.unicorn.handler;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.crac.Core;
 import org.crac.Resource;
@@ -38,6 +32,7 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
 import com.google.gson.Gson;
 
+import software.amazon.awscdk.examples.unicorn.ClassLoaderUtil;
 import software.amazon.awscdk.examples.unicorn.UnicornApplication;
 import software.amazon.awscdk.examples.unicorn.model.Unicorn;
 import software.amazon.awscdk.examples.unicorn.service.UnicornService;
@@ -74,6 +69,13 @@ public class ClassPriming implements RequestHandler<APIGatewayV2HTTPEvent, APIGa
         var unicorns = getUnicorns();
         var body = gson.toJson(unicorns);
 
+        var awsSamLocal = Boolean.parseBoolean(System.getenv("AWS_SAM_LOCAL"));
+        log.info("awsSamLocal: {}", awsSamLocal);
+
+        if (awsSamLocal) {
+            ClassLoaderUtil.printLoadedClasses();
+        }
+
         log.info("handleRequest->finished");
 
         return APIGatewayV2HTTPResponse.builder().withStatusCode(200).withBody(body).build();
@@ -84,24 +86,9 @@ public class ClassPriming implements RequestHandler<APIGatewayV2HTTPEvent, APIGa
             throws Exception {
         log.info("beforeCheckpoint->started");
 
-        Path path = Paths.get("classes-loaded.txt");
-
-        try (BufferedReader bufferedReader = Files.newBufferedReader(path)) {
-            Stream<String> lines = bufferedReader.lines();
-            lines.forEach(this::preLoadClass);
-        } catch (IOException exception) {
-            log.error("Error on newBufferedReader", exception);
-        }
+        ClassLoaderUtil.loadClassesFromFile();
 
         log.info("beforeCheckpoint->finished");
-    }
-
-    private void preLoadClass(String name) {
-        try {
-            Class.forName(name, true,
-                    ClassPriming.class.getClassLoader());
-        } catch (Throwable ignored) {
-        }
     }
 
     @Override

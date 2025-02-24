@@ -254,6 +254,7 @@ public class LambdaPrimingCracJavaCdkStack extends Stack {
         if (databaseUsername != null) {
             environmentVariables.put("SPRING_DATABASE_USERNAME", databaseUsername);
         }
+        environmentVariables.put("JAVA_TOOL_OPTIONS", "");
 
         var logGroup = LogGroup.Builder.create(this, "PrimingLogGroup-%s".formatted(primeType))
                 .retention(RetentionDays.THREE_DAYS)

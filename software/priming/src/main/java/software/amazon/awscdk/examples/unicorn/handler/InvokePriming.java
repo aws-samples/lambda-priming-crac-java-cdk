@@ -33,7 +33,7 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
 import com.google.gson.Gson;
 
 import software.amazon.awscdk.examples.unicorn.UnicornApplication;
-import software.amazon.awscdk.examples.unicorn.model.Unicorn;
+import software.amazon.awscdk.examples.unicorn.model.UnicornEmployee;
 import software.amazon.awscdk.examples.unicorn.service.UnicornService;
 
 public class InvokePriming implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse>, Resource {
@@ -47,8 +47,8 @@ public class InvokePriming implements RequestHandler<APIGatewayV2HTTPEvent, APIG
     public InvokePriming() {
         log.info("InvokePriming->started");
 
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(UnicornApplication.class,
-                new String[] {});
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(UnicornApplication.class
+        );
 
         this.unicornService = configurableApplicationContext.getBean(UnicornService.class);
         this.gson = configurableApplicationContext.getBean(Gson.class);
@@ -91,14 +91,14 @@ public class InvokePriming implements RequestHandler<APIGatewayV2HTTPEvent, APIG
         log.info("afterRestore->finished");
     }
 
-    public List<Unicorn> getUnicorns() {
+    public List<UnicornEmployee> getUnicorns() {
         log.info("getUnicorns->started");
 
-        List<Unicorn> unicorns = unicornService.read();
+        List<UnicornEmployee> unicornEmployees = unicornService.read();
 
         log.info("getUnicorns->finished");
 
-        return unicorns;
+        return unicornEmployees;
     }
 
 }

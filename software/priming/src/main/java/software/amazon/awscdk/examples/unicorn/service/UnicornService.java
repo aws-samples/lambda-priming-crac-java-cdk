@@ -20,7 +20,7 @@ package software.amazon.awscdk.examples.unicorn.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import software.amazon.awscdk.examples.unicorn.model.Unicorn;
+import software.amazon.awscdk.examples.unicorn.model.UnicornEmployee;
 import software.amazon.awscdk.examples.unicorn.repository.UnicornRepository;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class UnicornService {
         log.info("UnicornService->finished");
     }
 
-    public List<Unicorn> read() {
+    public List<UnicornEmployee> read() {
         return unicornRepository.findAll();
     }
 

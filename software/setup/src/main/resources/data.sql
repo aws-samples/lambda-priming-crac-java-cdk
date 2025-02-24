@@ -1,60 +1,400 @@
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Sparkle',
-        'Winged'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Moonbeam',
-        'Celestial'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Silverthorn',
-        'Winged'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Thunderstorm',
-        'Solar'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Sunburst',
-        'Illusionist'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Frostbite',
-        'Pegasus'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Leafwhisper',
-        'Illusionist'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Dreamweaver',
-        'Illusionist'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Starheart',
-        'Pegasus'
-    );
-INSERT INTO unicorn
-VALUES (
-        gen_random_uuid(),
-        'Windrunner',
-        'Astral'
-    );
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Krista Orcutt', 'Pennsylvania', 'Female', '10/22/91', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cora Soto', 'Massachusetts', 'Female', '1/15/92', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('James Millen', 'Washington', 'Male', '5/25/92', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Tara Applewhite', 'California', 'Female', '5/30/92', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Devin Lear', 'Massachusetts', 'Male', '6/29/92', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lucile Sexton', 'Washington', 'Female', '7/18/92', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jarrod Faith', 'California', 'Male', '8/21/92', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Terry Gross', 'Massachusetts', 'Male', '9/19/92', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jim Martin', 'Pennsylvania', 'Male', '10/7/92', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kathy Weatherby', 'California', 'Female', '10/7/92', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Nancy Garcia', 'Pennsylvania', 'Female', '11/15/92', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joel Thomas', 'New York', 'Male', '12/24/92', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Alan Ruley', 'California', 'Male', '1/4/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jose D. Skaggs', 'Arizona', 'Male', '2/12/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Richard L. Anderson', 'Arizona', 'Male', '2/24/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Dustin Tate', 'Pennsylvania', 'Male', '3/4/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Eddie Mangual', 'California', 'Male', '3/6/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kimberly Vos', 'Massachusetts', 'Female', '3/18/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Eric V. White', 'Pennsylvania', 'Male', '4/7/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Beverly Escobar', 'Pennsylvania', 'Female', '5/25/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Richard Guard', 'Massachusetts', 'Male', '5/28/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Michael Atwood', 'California', 'Male', '7/13/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jennifer D. Heath', 'New York', 'Female', '8/6/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Otis Ballenger', 'New York', 'Male', '8/8/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Reina Shuffler', 'California', 'Female', '8/21/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Steven H. Katz', 'Pennsylvania', 'Male', '9/24/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Raymond Kruger', 'New York', 'Male', '9/29/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Gregory Steiger', 'California', 'Male', '9/29/93', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('PhyllisTodd', 'Massachusetts', 'Female', '10/24/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Alec Dunbar', 'California', 'Male', '10/29/93', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janet D. Donegan', 'New York', 'Female', '1/18/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Renae Burns', 'California', 'Female', '1/28/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('James Millen', 'Pennsylvania', 'Male', '2/5/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ethel Sexton', 'Massachusetts', 'Female', '2/22/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Amos Bowes', 'New York', 'Male', '4/23/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Amy Fetter', 'Massachusetts', 'Female', '5/27/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Bennie Evans', 'Washington', 'Male', '6/3/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Dustin Myres', 'Pennsylvania', 'Male', '6/3/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeff Ryan', 'New York', 'Male', '6/13/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Whitney Johnson', 'New York', 'Female', '8/29/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Clark Bickerson', 'California', 'Male', '8/31/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Carol Wood', 'Massachusetts', 'Female', '9/8/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christine Poundsworth', 'Massachusetts', 'Female', '10/3/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Walter Thompson', 'California', 'Male', '10/3/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Randy Pruitt', 'Washington', 'Male', '10/22/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Karyn Hernandez', 'Massachusetts', 'Female', '10/25/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cynthia Beard', 'California', 'Female', '11/8/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Brenda White', 'California', 'Female', '11/11/94', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('James Deluna', 'Washington', 'Male', '11/20/94', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Marie Doyle', 'New York', 'Female', '1/16/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Raymond Cyr', 'Pennsylvania', 'Male', '1/23/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rosemary Vaughn', 'New York', 'Female', '2/1/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Donald Jackson', 'California', 'Male', '2/20/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lisa Golden', 'New York', 'Female', '3/4/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Debbie Barlow', 'California', 'Female', '5/12/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Brandy Walker', 'Washington', 'Female', '5/20/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Charles S. Billings', 'Pennsylvania', 'Male', '5/29/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janet Woodson', 'Arizona', 'Female', '7/2/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Clark Bickerson', 'New York', 'Male', '8/14/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ruth Roberts', 'Arizona', 'Female', '8/19/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Shirley Henderson', 'Massachusetts', 'Female', '8/28/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('David B. Ortiz', 'Massachusetts', 'Male', '9/4/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Micheal Belt', 'Massachusetts', 'Male', '9/8/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kevin Whited', 'Massachusetts', 'Male', '9/13/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rosa Johnson', 'Massachusetts', 'Female', '10/5/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sylvia Saenz', 'New York', 'Female', '10/17/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Bruce Burke', 'Pennsylvania', 'Male', '12/5/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Steven Yarbrough', 'Massachusetts', 'Male', '12/14/95', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Maria Silva', 'Washington', 'Female', '12/20/95', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sherrie Landry', 'Pennsylvania', 'Female', '1/11/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jesus Farrington', 'New York', 'Male', '3/12/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Glenda Phillips', 'New York', 'Female', '3/17/96', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert Farmer', 'California', 'Male', '4/12/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sam Axtell', 'Washington', 'Male', '4/15/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kristin Beaton', 'Pennsylvania', 'Female', '4/17/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lori Q. Waters', 'Massachusetts', 'Female', '5/11/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Shirley Miller', 'Massachusetts', 'Female', '6/14/96', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Dianne Wong', 'New York', 'Female', '6/17/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cheryl Cory', 'California', 'Female', '6/20/96', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kevin Grant', 'New York', 'Male', '6/24/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Stephen C. Carter', 'Massachusetts', 'Male', '7/6/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elsie Haines', 'New York', 'Female', '7/14/96', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elinor Love', 'California', 'Female', '7/29/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Goldie Almond', 'Massachusetts', 'Female', '8/1/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Pat Fisher', 'Pennsylvania', 'Male', '8/26/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Goldie Lahr', 'California', 'Female', '10/31/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Alan Hudson', 'New York', 'Male', '11/7/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Dennis R. Waxman', 'California', 'Male', '11/10/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Curtis Miller', 'Arizona', 'Male', '11/24/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey Ritter', 'Pennsylvania', 'Male', '12/20/96', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Vada Mcintosh', 'California', 'Female', '1/24/97', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christine Poundsworth', 'New York', 'Female', '3/15/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('PhyllisTodd', 'Massachusetts', 'Female', '3/29/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Steven H. Katz', 'California', 'Male', '4/7/97', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Erica Gentile', 'Massachusetts', 'Female', '4/15/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Roy Lindsey', 'California', 'Male', '4/21/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janice Reynolds', 'New York', 'Female', '4/24/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Josh Chiu', 'Massachusetts', 'Male', '7/4/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Francine H. Dundas', 'Washington', 'Female', '7/13/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Anthony Taylor', 'Washington', 'Male', '8/8/97', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ruby Smith', 'California', 'Female', '9/22/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Deborah Sherman', 'California', 'Female', '9/24/97', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Bryan Demarco', 'Pennsylvania', 'Male', '10/10/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert Ballard', 'Massachusetts', 'Male', '10/10/97', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Booker Dunmire', 'New York', 'Male', '11/11/97', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Clark Bickerson', 'Washington', 'Male', '1/6/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Douglas Williams', 'Washington', 'Male', '1/24/98', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Betty Myers', 'New York', 'Female', '1/27/98', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Geoffrey Dant', 'Massachusetts', 'Male', '4/5/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ashley Miller', 'New York', 'Female', '4/6/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Fred Dickison', 'California', 'Male', '5/9/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Peggy Craig', 'Arizona', 'Female', '5/18/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ethel Blaylock', 'New York', 'Female', '6/25/98', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Guillermo W. Phillips', 'California', 'Male', '7/1/98', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Barbara Roark', 'California', 'Female', '7/18/98', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert H. Miller', 'Washington', 'Male', '8/5/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Stephen C. Carter', 'Washington', 'Male', '8/22/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lois Mcwilliams', 'New York', 'Female', '9/9/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Irene Schreiber', 'California', 'Female', '10/1/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Royce Gilbert', 'Massachusetts', 'Male', '10/3/98', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Arthur Clayson', 'Massachusetts', 'Male', '10/29/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey P. Jones', 'Massachusetts', 'Male', '10/30/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Michael Hayden', 'California', 'Male', '11/9/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Korey Davis', 'Pennsylvania', 'Male', '11/10/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Charles S. Billings', 'Massachusetts', 'Male', '11/12/98', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joseph Christensen', 'Massachusetts', 'Male', '2/13/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey Sharp', 'New York', 'Male', '3/4/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('James Millen', 'Washington', 'Male', '3/14/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Danny Salinas', 'California', 'Male', '3/22/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kurt Kamichoff', 'California', 'Male', '3/28/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jason J. Marshall', 'New York', 'Male', '4/5/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert Nipper', 'Washington', 'Male', '5/10/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Connie Combs', 'New York', 'Female', '5/22/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey P. Jones', 'New York', 'Male', '6/8/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Marina W. Fuller', 'New York', 'Female', '7/13/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Juan Law', 'Massachusetts', 'Male', '7/17/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joel Maser', 'California', 'Male', '7/23/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christian Reynolds', 'Massachusetts', 'Male', '8/17/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey Vaughn', 'Massachusetts', 'Male', '9/7/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Barbara Stolz', 'California', 'Female', '9/22/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Katherine J. Smith', 'Massachusetts', 'Female', '10/3/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Esther Rice', 'Massachusetts', 'Female', '10/15/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('David Adam', 'California', 'Male', '10/20/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Manuel Cannon', 'Massachusetts', 'Male', '10/31/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jodie Crowley', 'Massachusetts', 'Female', '11/11/99', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rodney Sharpe', 'Massachusetts', 'Male', '12/15/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janet Stewart', 'California', 'Female', '12/27/99', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Willie Paris', 'New York', 'Female', '1/22/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Richard Curtis', 'Massachusetts', 'Male', '2/14/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rae Walton', 'Washington', 'Female', '2/28/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Salvatore Henderson', 'California', 'Male', '4/14/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Leah Clancy', 'Massachusetts', 'Female', '4/27/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Tomasa Speer', 'California', 'Female', '5/4/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Michael Hayden', 'California', 'Male', '5/25/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Earnest Hale', 'New York', 'Male', '5/29/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Enid Gilbert', 'New York', 'Female', '6/3/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert Alexander', 'Arizona', 'Male', '6/19/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey P. Jones', 'California', 'Male', '6/23/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Steven H. Katz', 'Pennsylvania', 'Male', '6/25/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('George Elmore', 'Washington', 'Male', '10/3/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Nicholas Trejo', 'Pennsylvania', 'Male', '10/25/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kenneth Credle', 'California', 'Male', '11/5/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ray Bortz', 'California', 'Male', '11/27/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kurt Kamichoff', 'New York', 'Male', '11/29/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christopher Hudson', 'Pennsylvania', 'Male', '12/7/00', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Linda Boston', 'Massachusetts', 'Female', '12/10/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cassandra Jackson', 'Arizona', 'Female', '12/12/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sharon Henry', 'California', 'Female', '12/24/00', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sandra Cotta', 'Massachusetts', 'Female', '1/5/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Oscar Lee', 'Massachusetts', 'Male', '2/6/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jason Joseph', 'Massachusetts', 'Male', '2/7/01', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Nadine Blankenship', 'New York', 'Female', '2/21/01', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sean Grantham', 'California', 'Male', '3/1/01', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('PhyllisTodd', 'Pennsylvania', 'Female', '3/15/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Erica Marshall', 'Pennsylvania', 'Female', '4/23/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Clarissa Christiansen', 'California', 'Female', '4/24/01', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jillian Koster', 'Massachusetts', 'Female', '6/19/01', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Micheal Chadwick', 'California', 'Male', '7/9/01', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Charles Bingham', 'California', 'Male', '7/27/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Susan Morgan', 'Pennsylvania', 'Female', '8/9/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Stephanie Hill', 'Massachusetts', 'Female', '8/18/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cheryl Gaymon', 'California', 'Female', '8/21/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Patrick Angell', 'California', 'Male', '9/30/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Melvin Jordan', 'Washington', 'Male', '10/17/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Stephen C. Carter', 'Arizona', 'Male', '11/10/01', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kimberly Barefoot', 'California', 'Female', '1/13/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rick Fogerty', 'Washington', 'Male', '1/26/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jodie Tindall', 'Massachusetts', 'Female', '4/7/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Paul Carlson', 'California', 'Male', '4/29/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('John T. Foster', 'Massachusetts', 'Male', '4/30/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert Cipriani', 'Massachusetts', 'Male', '5/15/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Martha Welborn', 'Washington', 'Female', '5/16/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Carly Iorio', 'Massachusetts', 'Female', '5/28/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Donna Couch', 'California', 'Female', '6/3/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeff Brooks', 'New York', 'Male', '6/20/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joseph Oliveros', 'Arizona', 'Male', '7/15/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Douglas Williams', 'California', 'Male', '7/15/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elise Bedgood', 'California', 'Female', '7/19/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Tasha Williams', 'Massachusetts', 'Female', '8/12/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Diane Mcmahon', 'Massachusetts', 'Female', '10/9/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Alphonso F. Gordon', 'Washington', 'Male', '10/9/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janie Little', 'Massachusetts', 'Female', '10/20/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert Pelkey', 'Massachusetts', 'Male', '10/22/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Betsy D. Kelly', 'New York', 'Female', '11/7/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janet Silberstein', 'New York', 'Female', '12/3/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jason Sullivan', 'Arizona', 'Male', '12/14/02', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Merlin Owens', 'New York', 'Male', '12/16/02', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Richard E. Card', 'California', 'Male', '1/9/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Pearl Lippert', 'Pennsylvania', 'Female', '1/20/03', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christopher Huff', 'Washington', 'Male', '2/11/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('John T. Foster', 'Massachusetts', 'Male', '4/27/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rick Fogerty', 'New York', 'Male', '5/5/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Mary G. Brittain', 'Pennsylvania', 'Female', '5/27/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Michael Lindsey', 'California', 'Male', '5/29/03', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Gary Harrison', 'New York', 'Male', '6/2/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Susan Orosco', 'California', 'Female', '6/13/03', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Daniel Sandy', 'California', 'Male', '6/14/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Charles S. Billings', 'Pennsylvania', 'Male', '6/20/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kevin E. Wishart', 'Massachusetts', 'Male', '6/25/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('David Arellano', 'California', 'Male', '7/12/03', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('John T. Foster', 'California', 'Male', '9/25/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Tom Brown', 'California', 'Male', '11/13/03', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Marcus Eoff', 'California', 'Male', '11/13/03', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Thomas E. Abbott', 'Washington', 'Male', '2/21/04', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Dawne Thompson', 'Massachusetts', 'Female', '4/2/04', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Steven Cervantez', 'Arizona', 'Male', '7/21/04', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rachel Armstrong', 'California', 'Female', '9/6/04', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christopher J. Polzin', 'California', 'Male', '9/22/04', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Virginia Okeefe', 'California', 'Female', '9/28/04', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Roy Hilliker', 'Pennsylvania', 'Male', '10/16/04', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Margaret Clark', 'New York', 'Female', '12/14/04', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kendal Alford', 'Washington', 'Female', '12/22/04', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Anthony Guyette', 'California', 'Male', '1/27/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Clarice Longenecker', 'Pennsylvania', 'Female', '2/5/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('John Edwards', 'Pennsylvania', 'Male', '2/6/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Keith Bennett', 'California', 'Male', '3/28/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Thomas Feather', 'California', 'Male', '4/17/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jessica Aten', 'New York', 'Female', '6/22/05', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Brandon Cutter', 'Pennsylvania', 'Male', '7/11/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Gerald Castro', 'California', 'Male', '8/13/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('John Ohara', 'Massachusetts', 'Male', '8/15/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Anthony Taylor', 'Massachusetts', 'Male', '9/18/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Fred Martin', 'California', 'Male', '10/1/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jamie Stowe', 'Pennsylvania', 'Female', '11/19/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Arthur Williams', 'Pennsylvania', 'Male', '12/7/05', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Stella Larue', 'Massachusetts', 'Female', '12/11/05', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Charles Head', 'New York', 'Male', '12/19/05', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Marc Weaver', 'California', 'Male', '2/6/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sarah Silva', 'New York', 'Female', '2/24/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Linda Perez', 'New York', 'Female', '2/24/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kendra Weber', 'Massachusetts', 'Female', '3/17/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janet Silberstein', 'California', 'Female', '3/27/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Michelle French', 'California', 'Female', '4/2/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Alma Cruz', 'New York', 'Female', '4/8/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rochelle Quick', 'New York', 'Female', '5/1/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ruth Peel', 'New York', 'Female', '5/7/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lowell Harrison', 'California', 'Male', '6/30/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Thomas E. Abbott', 'Washington', 'Male', '7/17/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joan Morrison', 'Arizona', 'Female', '7/23/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sherry F. Bennett', 'New York', 'Female', '7/26/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Evelyn Mcmurry', 'Washington', 'Female', '8/13/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Scott Yeldell', 'New York', 'Male', '8/30/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Laura Wood', 'New York', 'Female', '9/6/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey Jones', 'Washington', 'Male', '9/20/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Tammy Baker', 'New York', 'Female', '9/26/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Caleb Ham', 'California', 'Male', '10/12/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Alice J. Guerra', 'Washington', 'Female', '10/16/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Dorothy Herrera', 'New York', 'Female', '10/22/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jean Rose', 'Massachusetts', 'Female', '11/10/06', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rodney Guerra', 'New York', 'Male', '12/8/06', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kelly J. Sousa', 'California', 'Female', '1/12/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Emily Jorden', 'Pennsylvania', 'Female', '1/29/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Zenaida Jeon', 'California', 'Female', '2/3/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Shirley Hill', 'Washington', 'Female', '3/1/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Richard E. Card', 'Pennsylvania', 'Male', '3/20/07', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Anthony Gary', 'Arizona', 'Male', '4/3/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sheila Wigfall', 'California', 'Female', '4/9/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Roy Greene', 'New York', 'Male', '4/17/07', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('David Pearce', 'Pennsylvania', 'Male', '5/7/07', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elidia Bode', 'New York', 'Female', '5/11/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Tom Brown', 'Massachusetts', 'Male', '6/25/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lawrence Friedrich', 'Washington', 'Male', '7/31/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Thomas H. Metz', 'Massachusetts', 'Male', '8/8/07', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Penny Philbrick', 'California', 'Female', '9/27/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Dawn Purvis', 'New York', 'Female', '10/18/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Gregg Rhoades', 'Pennsylvania', 'Male', '11/2/07', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jeffrey Walters', 'Washington', 'Male', '11/26/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Allison Mcewen', 'Massachusetts', 'Female', '12/15/07', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Tom Brown', 'Arizona', 'Male', '1/29/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Alfred Glenn', 'New York', 'Male', '3/13/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jonas Green', 'California', 'Male', '3/16/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('David Keller', 'Massachusetts', 'Male', '3/22/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jerry Olivo', 'California', 'Male', '3/26/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Corinna Beltran', 'Washington', 'Female', '4/13/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lewis Liptak', 'Arizona', 'Male', '4/15/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Nicholas N. Cagle', 'Massachusetts', 'Male', '4/24/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Raymond Oneal', 'New York', 'Male', '5/3/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Michelle Noonan', 'Massachusetts', 'Female', '5/6/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Michael Hayden', 'California', 'Male', '5/9/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ronald Warren', 'Pennsylvania', 'Male', '5/11/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Gregory Sperber', 'California', 'Male', '5/15/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Judith Graham', 'California', 'Female', '6/8/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Daniel Desantis', 'Massachusetts', 'Male', '6/26/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Annie Chaidez', 'New York', 'Female', '7/1/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Al Grubbs', 'California', 'Male', '7/3/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joan Morrison', 'Massachusetts', 'Female', '8/12/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rosemary O. Richards', 'New York', 'Female', '8/18/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jamie Banks', 'Massachusetts', 'Female', '8/27/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Humberto Hoosier', 'Washington', 'Male', '8/30/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Donna Wallace', 'Pennsylvania', 'Female', '9/9/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ricky Penman', 'Massachusetts', 'Male', '9/12/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Melinda Stokes', 'New York', 'Female', '10/4/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Rick Fogerty', 'Washington', 'Male', '11/2/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert H. Miller', 'California', 'Male', '11/8/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Teresa Allen', 'California', 'Female', '11/9/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Janet Silberstein', 'New York', 'Female', '12/5/08', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Richard E. Card', 'Arizona', 'Male', '12/24/08', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christian Moye', 'New York', 'Male', '1/3/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('David Hare', 'New York', 'Male', '1/16/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kellie Witherspoon', 'Washington', 'Female', '2/1/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Olive Arsenault', 'California', 'Female', '4/9/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Gloria Brown', 'California', 'Female', '5/17/09', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Fred Moua', 'New York', 'Male', '5/29/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Brandi Reynolds', 'California', 'Female', '6/10/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Audrey Vogel', 'Massachusetts', 'Female', '7/16/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('John Clarke', 'California', 'Male', '8/4/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Ronald Rouse', 'Massachusetts', 'Male', '8/22/09', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Loretta Alvarez', 'California', 'Female', '8/26/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jesus Gascon', 'Washington', 'Male', '9/22/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Diane Delgado', 'Pennsylvania', 'Female', '10/3/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sandra Clarke', 'Pennsylvania', 'Female', '10/14/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Amy Majors', 'Massachusetts', 'Female', '10/29/09', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Beverly B. Gray', 'New York', 'Female', '12/2/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Carl Dexter', 'New York', 'Male', '12/19/09', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Howard Keach', 'California', 'Male', '12/19/09', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Charles Seeley', 'Massachusetts', 'Male', '1/4/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Bob Hunsberger', 'Pennsylvania', 'Male', '1/13/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Beverly Soares', 'Massachusetts', 'Female', '1/16/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sarah Parks', 'New York', 'Female', '1/26/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cristobal Lopez', 'Pennsylvania', 'Male', '1/27/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Susan Sikes', 'California', 'Female', '3/1/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Pedro H. Nicholson', 'Arizona', 'Male', '3/14/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('William N. Campbell', 'New York', 'Male', '3/25/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Hosea Pierson', 'New York', 'Male', '3/28/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Chase Mcnamara', 'New York', 'Male', '4/8/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Gary Lees', 'New York', 'Male', '4/29/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Douglas Williams', 'Arizona', 'Male', '5/7/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kelly Dollinger', 'Massachusetts', 'Female', '5/11/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Clinton Soto', 'New York', 'Male', '5/20/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Clint Suarez', 'California', 'Male', '5/27/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cindy Chow', 'New York', 'Female', '6/28/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Linda Carbajal', 'Massachusetts', 'Female', '7/1/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joan Morrison', 'Massachusetts', 'Female', '7/31/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kurt Kamichoff', 'New York', 'Male', '8/8/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kurt Decker', 'Washington', 'Male', '10/4/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Cynthia Naskers', 'Pennsylvania', 'Female', '10/4/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Christine Poundsworth', 'California', 'Female', '10/5/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Arthur Werner', 'California', 'Male', '10/22/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kenneth Williams', 'California', 'Male', '10/24/10', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joyce Cotton', 'California', 'Female', '12/6/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Irving Kim', 'Massachusetts', 'Male', '12/12/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elsie Truong', 'New York', 'Female', '12/26/10', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Anne Boyd', 'New York', 'Female', '1/2/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Edward Bryant', 'California', 'Male', '1/4/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Carrie Bryan', 'New York', 'Female', '2/23/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Miranda Bassett', 'New York', 'Female', '2/26/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Matthew Silvia', 'Pennsylvania', 'Male', '3/3/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Brian Bass', 'Massachusetts', 'Male', '3/25/11', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Anthony Taylor', 'Pennsylvania', 'Male', '5/10/11', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Sharon Pineda', 'Washington', 'Female', '5/16/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jason Hadlock', 'Washington', 'Male', '7/31/11', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jan Jones', 'Massachusetts', 'Male', '8/8/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Scott Palen', 'California', 'Male', '8/21/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Karen Coles', 'California', 'Female', '8/26/11', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elmer Tompkins', 'Massachusetts', 'Male', '8/30/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Roland Pastrana', 'New York', 'Male', '9/1/11', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Margaret Sirois', 'California', 'Female', '9/7/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('William Patterson', 'New York', 'Male', '9/15/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Morgan Houchens', 'Washington', 'Female', '10/3/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Stephen Foster', 'New York', 'Male', '10/9/11', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Austin Stone', 'California', 'Male', '12/6/11', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Filomena Jordan', 'Massachusetts', 'Female', '12/14/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elmer Clifton', 'Arizona', 'Male', '12/16/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Larry Kiel', 'Massachusetts', 'Male', '12/19/11', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Heather Lichtenstein', 'Washington', 'Female', '1/17/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('John Vaughan', 'Washington', 'Male', '2/9/12', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Lupe Spicer', 'New York', 'Female', '2/9/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Elizabeth Cole', 'Washington', 'Female', '3/15/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jennifer Brown', 'New York', 'Female', '4/11/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Thomas E. Abbott', 'California', 'Male', '4/25/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jonathan J. Conte', 'Massachusetts', 'Male', '5/12/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Kenny H. Mcqueen', 'California', 'Male', '5/14/12', 'TRUE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Robert H. Miller', 'Massachusetts', 'Male', '5/27/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Madge Jackson', 'New York', 'Female', '5/30/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Jaime Williamson', 'Washington', 'Male', '6/27/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Terry Rasmussen', 'California', 'Male', '7/7/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Samuel Mcdonald', 'New York', 'Male', '7/17/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Joseph Ramos', 'Massachusetts', 'Male', '7/18/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Frank Austin', 'New York', 'Male', '7/30/12', 'FALSE');
+INSERT INTO UnicornEmployee ("EmployeeName", "Location", "Gender", "DateHired", "ExemptStatus") VALUES ('Mary Brinkmann', 'New York', 'Female', '7/30/12', 'FALSE');

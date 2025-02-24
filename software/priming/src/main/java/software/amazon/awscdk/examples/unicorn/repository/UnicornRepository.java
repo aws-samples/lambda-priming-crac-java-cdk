@@ -26,7 +26,7 @@ import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import software.amazon.awscdk.examples.unicorn.model.Unicorn;
+import software.amazon.awscdk.examples.unicorn.model.UnicornEmployee;
 
 @Repository
 public class UnicornRepository {
@@ -41,26 +41,29 @@ public class UnicornRepository {
         log.info("UnicornRepository->finished");
     }
 
-    public List<Unicorn> findAll() {
+    public List<UnicornEmployee> findAll() {
         log.info("findAll->started");
 
-        List<Unicorn> unicorns;
+        List<UnicornEmployee> unicornEmployees;
 
         try {
-            unicorns = jdbcTemplate.query("SELECT * FROM unicorn", (resultSet, rowNum) -> {
-                return new Unicorn(UUID.fromString(resultSet.getString("id")), resultSet.getString("name"),
-                        resultSet.getString("type"));
+            unicornEmployees = jdbcTemplate.query("SELECT * FROM UnicornEmployee ORDER BY \"EmployeeId\" ASC LIMIT 100", (resultSet, rowNum) -> {
+                return new UnicornEmployee(resultSet.getInt("EmployeeId"),
+                        resultSet.getString("EmployeeName"),
+                        resultSet.getString("Location"),
+                        resultSet.getString("Gender"),
+                        resultSet.getString("DateHired"),
+                        resultSet.getString("ExemptStatus"));
             });
         } catch (BadSqlGrammarException exception) {
-            unicorns = List.of();
+            unicornEmployees = List.of();
         } catch (Exception exception) {
             log.error("findAll->error: {}", exception.getMessage());
-            unicorns = List.of();
+            unicornEmployees = List.of();
         }
 
         log.info("findAll->finished");
 
-        return unicorns;
+        return unicornEmployees;
     }
-
 }

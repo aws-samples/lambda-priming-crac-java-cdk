@@ -17,7 +17,14 @@
  */
 package software.amazon.awscdk.examples.unicorn.model;
 
-import java.util.UUID;
+import java.time.LocalDate;
+import java.util.Objects;
 
-public record Unicorn(UUID id, String name, String type) {
+public record UnicornEmployee(
+        int employeeId,
+        String employeeName,
+        String location,
+        String gender,
+        String dateHired,
+        String exemptStatus) {
 }

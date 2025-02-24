@@ -1,0 +1,19 @@
+{
+  "PrimingJavaLambdaFunction-1_ON_DEMAND": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/priming_java_db",
+    "SPRING_DATASOURCE_PASSWORD": "6*!KM4ewe::ZZQ$zn\\q1Q)m:2AVIBW\\DDV6kYJ_&"
+  },
+  "PrimingJavaLambdaFunction-2_SnapStart_NO_PRIMING": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/priming_java_db",
+    "SPRING_DATASOURCE_PASSWORD": "6*!KM4ewe::ZZQ$zn\\q1Q)m:2AVIBW\\DDV6kYJ_&"
+  },
+  "PrimingJavaLambdaFunction-3_SnapStart_INVOKE_PRIMING": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/priming_java_db",
+    "SPRING_DATASOURCE_PASSWORD": "6*!KM4ewe::ZZQ$zn\\q1Q)m:2AVIBW\\DDV6kYJ_&"
+  },
+  "PrimingJavaLambdaFunction-4_SnapStart_CLASS_PRIMING": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/priming_java_db",
+    "SPRING_DATASOURCE_PASSWORD": "6*!KM4ewe::ZZQ$zn\\q1Q)m:2AVIBW\\DDV6kYJ_&",
+    "JAVA_TOOL_OPTIONS": "-Xlog:class+load=info:/tmp/local-classes-loaded.txt"
+  }
+}

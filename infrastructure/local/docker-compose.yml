@@ -2,7 +2,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15
-    container_name: unicorn_db
+    container_name: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secretpassword
@@ -10,15 +10,14 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - priming-network
+      - postgres-network
 
 volumes:
   postgres_data:
 
 networks:
-  priming-network:
-    name: priming-network
+  postgres-network:
+    name: postgres-network
     driver: bridge

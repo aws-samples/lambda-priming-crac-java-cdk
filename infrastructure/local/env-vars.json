@@ -1,6 +1,7 @@
 {
-  "PrimingJavaLambdaFunction-1_ON_DEMAND": {
+  "PrimingJavaLambdaFunction-5_DB_LOADER": {
     "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/postgres",
+    "SPRING_DATABASE_USERNAME": "postgres",
     "SPRING_DATASOURCE_PASSWORD": "secretpassword"
   },
   "PrimingJavaLambdaFunction-4_SnapStart_CLASS_PRIMING": {

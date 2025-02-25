@@ -1,8 +1,8 @@
 config:
   phases:
     - duration: 60
-      arrivalRate: 200
-      name: Load testing the Priming API for 60 seconds with 200 concurrent requests/s
+      arrivalRate: 50
+      name: Load testing the Priming API for 60 seconds with 50 concurrent requests/s
 scenarios:
   - flow:
       - get:

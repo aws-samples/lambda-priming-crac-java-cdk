@@ -63,18 +63,8 @@ public class ClassPriming implements RequestHandler<APIGatewayV2HTTPEvent, APIGa
     public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context) {
         log.info("handleRequest->started");
 
-        var awsLambdaInitializationType = System.getenv("AWS_LAMBDA_INITIALIZATION_TYPE");
-        log.info("awsLambdaInitializationType: {}", awsLambdaInitializationType);
-
         var unicorns = getUnicorns();
         var body = gson.toJson(unicorns);
-
-        var awsSamLocal = Boolean.parseBoolean(System.getenv("AWS_SAM_LOCAL"));
-        log.info("awsSamLocal: {}", awsSamLocal);
-
-        if (awsSamLocal) {
-            ClassLoaderUtil.printLoadedClasses();
-        }
 
         log.info("handleRequest->finished");
 
@@ -85,9 +75,7 @@ public class ClassPriming implements RequestHandler<APIGatewayV2HTTPEvent, APIGa
     public void beforeCheckpoint(org.crac.Context<? extends Resource> context)
             throws Exception {
         log.info("beforeCheckpoint->started");
-
         ClassLoaderUtil.loadClassesFromFile();
-
         log.info("beforeCheckpoint->finished");
     }
 

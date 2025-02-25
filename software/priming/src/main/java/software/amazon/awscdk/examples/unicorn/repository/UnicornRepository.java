@@ -47,7 +47,7 @@ public class UnicornRepository {
         List<UnicornEmployee> unicornEmployees;
 
         try {
-            unicornEmployees = jdbcTemplate.query("SELECT * FROM UnicornEmployee ORDER BY \"EmployeeId\" ASC LIMIT 100", (resultSet, rowNum) -> {
+            unicornEmployees = jdbcTemplate.query("SELECT * FROM UnicornEmployee ORDER BY \"EmployeeId\" ASC LIMIT 10", (resultSet, rowNum) -> {
                 return new UnicornEmployee(resultSet.getInt("EmployeeId"),
                         resultSet.getString("EmployeeName"),
                         resultSet.getString("Location"),

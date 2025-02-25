@@ -4,6 +4,18 @@
     "SPRING_DATABASE_USERNAME": "postgres",
     "SPRING_DATASOURCE_PASSWORD": "secretpassword"
   },
+  "PrimingJavaLambdaFunction-1_ON_DEMAND": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/postgres",
+    "SPRING_DATASOURCE_PASSWORD": "secretpassword"
+  },
+  "PrimingJavaLambdaFunction-2_SnapStart_NO_PRIMING": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/postgres",
+    "SPRING_DATASOURCE_PASSWORD": "secretpassword"
+  },
+  "PrimingJavaLambdaFunction-3_SnapStart_INVOKE_PRIMING": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/postgres",
+    "SPRING_DATASOURCE_PASSWORD": "secretpassword"
+  },
   "PrimingJavaLambdaFunction-4_SnapStart_CLASS_PRIMING": {
     "SPRING_DATASOURCE_URL": "jdbc:postgresql://host.docker.internal:5432/postgres",
     "SPRING_DATASOURCE_PASSWORD": "secretpassword",

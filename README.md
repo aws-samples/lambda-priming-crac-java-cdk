@@ -15,6 +15,8 @@ Priming is a mechanism to further optimize and enhance the performance of Lambda
 * [Java 21](https://aws.amazon.com/corretto/)
 * [Maven](https://maven.apache.org/)
 * [curl](https://curl.se/)
+* [Docker](https://www.docker.com/) installed and configured if you want to run lambdas locally
+* [AWS Serverless Application Model](https://aws.amazon.com/pt/serverless/sam/) (AWS SAM) installed if you want to run lambdas locally
 
 ## Deployment Instructions
 
@@ -87,6 +89,26 @@ Select the log groups bellow:
 /aws/lambda/PrimingLogGroup-3_SnapStart_INVOKE_PRIMING
 /aws/lambda/PrimingLogGroup-4_SnapStart_CLASS_PRIMING
 ```
+
+## Setting-up lambda locally for testing pourpose
+
+You can run the lambdas, _PrimingJavaLambdaFunction-5_DB_LOADER_ and _PrimingJavaLambdaFunction-4_SnapStart_CLASS_PRIMING_, locally with the commands below:
+
+1. Start Postgres locally using Docker:
+   ```
+   docker-compose --file docker-compose.yml up
+   ```
+
+2. Init the database using the _DB_LOADER_ lambda:
+   ```
+   sam local invoke PrimingJavaLambdaFunction-5_DB_LOADER --env-vars local/env-vars.json --template cdk.out/LambdaPrimingCracJavaCdkStack.template.json --docker-network host
+   ```
+
+3. Execute the _CLASS_PRIMING_ lambda:
+   ```
+   sam local invoke PrimingJavaLambdaFunction-4_SnapStart_CLASS_PRIMING --env-vars local/env-vars.json --template cdk.out/LambdaPrimingCracJavaCdkStack.template.json --docker-network host
+   ```
+
 
 ## Clean-up
 
